@@ -15,7 +15,12 @@ const Home: React.FC = () => {
                 <Link to="/page/content">Content </Link>
             </Header>
             <Content>
-                <FlatList data={DATA} dataSpliter={<DividerLayout />} />
+                <FlatList
+                    data={DATA}
+                    dataSplitter={<DividerLayout />}
+                    headerSplitter={true}
+                    bottomSplitter={true}
+                />
             </Content>
             <Footer>
                 <Link to="/page/footer">Footer </Link>
