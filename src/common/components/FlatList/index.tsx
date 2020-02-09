@@ -1,21 +1,27 @@
 import React from 'react';
-import { ListLayout } from './styles';
+import { ListLayout, Container } from './styles';
 
 interface Props {
     data: any;
-    dataSpliter?: any;
+    headerSplitter?: boolean;
+    bottomSplitter?: boolean;
+    dataSplitter?: any;
 }
 
-const FlatList: React.FC<Props> = ({ data, dataSpliter }) => {
-    console.log(dataSpliter);
-    return data.map((m: any, i: number) => {
-        return (
-            <>
-                <ListLayout key={i.toString()}>{m}</ListLayout>
-                {i < data.length - 1 && dataSpliter}
-            </>
-        );
-    });
+const FlatList: React.FC<Props> = ({
+    data,
+    dataSplitter,
+    headerSplitter,
+    bottomSplitter,
+}) => {
+    return data.map((m: any, i: number) => (
+        <Container key={i.toString()}>
+            {i === 0 && headerSplitter && dataSplitter}
+            <ListLayout>{m}</ListLayout>
+            {i < data.length - 1 && dataSplitter}
+            {i === data.length - 1 && bottomSplitter && dataSplitter}
+        </Container>
+    ));
 };
 
 export default FlatList;
