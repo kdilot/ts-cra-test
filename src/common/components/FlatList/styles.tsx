@@ -2,15 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
-    flex: 1;
-`;
-
-export const ListLayout = styled.div`
-    display: flex;
-    flex: 1;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: yellow;
-    margin: 1px;
+`;
+
+export const ListLayout = styled.div`
+    display: inline-block;
+    width: 100%;
+    text-align: center;
 `;
