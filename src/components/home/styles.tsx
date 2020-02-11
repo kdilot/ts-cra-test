@@ -13,8 +13,9 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     height: 70vh;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background-color: lightgray;
 `;
 
 export const Footer = styled.div`

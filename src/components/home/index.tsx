@@ -1,11 +1,28 @@
 import React from 'react';
-import { Header, Content, Footer, DividerLayout } from './styles';
+import { Header, Content, Footer } from './styles';
 import { Link } from 'react-router-dom';
-import { FlatList } from 'common';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import { SampleList } from 'common';
 
-const DATA = new Array(10).fill('AAA');
+const useStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    child: {
+        display: 'flex',
+        flexGrow: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+}));
+
+const DATA = new Array(12).fill(null);
 
 const Home: React.FC = () => {
+    const classes = useStyles();
     return (
         <>
             <Header>
@@ -15,12 +32,24 @@ const Home: React.FC = () => {
                 <Link to="/page/content">Content </Link>
             </Header>
             <Content>
-                <FlatList
+                {/* <FlatList
                     data={DATA}
                     dataSplitter={<DividerLayout />}
                     headerSplitter={true}
                     bottomSplitter={true}
-                />
+                /> */}
+                <Grid
+                    className={classes.root}
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center">
+                    {DATA.map((m: any, i: number) => (
+                        <Grid item className={classes.child} xs={3} key={i}>
+                            <SampleList />
+                        </Grid>
+                    ))}
+                </Grid>
             </Content>
             <Footer>
                 <Link to="/page/footer">Footer </Link>
