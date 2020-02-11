@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from './styles';
 
 const SampleList: React.FC = () => {
-    return <Container>asdf</Container>;
+    return <Container>test</Container>;
 };
 
 export default SampleList;
