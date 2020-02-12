@@ -1,29 +1,29 @@
 import React from 'react';
 import { Header, Content, Footer } from './styles';
 import { Link } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import { SampleList } from 'common';
+// import Grid from '@material-ui/core/Grid';
+// import { makeStyles } from '@material-ui/core/styles';
+import { Player } from 'common';
 import { Helmet } from 'react-helmet-async';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    child: {
-        display: 'flex',
-        flexGrow: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-}));
+// const useStyles = makeStyles(theme => ({
+//     root: {
+//         flexGrow: 1,
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//     },
+//     child: {
+//         display: 'flex',
+//         flexGrow: 1,
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//     },
+// }));
 
-const DATA = new Array(12).fill(null);
+// const DATA = new Array(12).fill(null);
 
 const Home: React.FC = () => {
-    const classes = useStyles();
+    // const classes = useStyles();
     return (
         <>
             <Helmet>
@@ -42,7 +42,7 @@ const Home: React.FC = () => {
                     headerSplitter={true}
                     bottomSplitter={true}
                 /> */}
-                <Grid
+                {/* <Grid
                     className={classes.root}
                     container
                     direction="row"
@@ -53,7 +53,8 @@ const Home: React.FC = () => {
                             <SampleList />
                         </Grid>
                     ))}
-                </Grid>
+                </Grid> */}
+                <Player />
             </Content>
             <Footer>
                 <Link to="/page/footer">Footer </Link>
