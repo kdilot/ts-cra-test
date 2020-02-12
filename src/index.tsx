@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import Route from 'routes';
+import Route from 'routes';
 import * as serviceWorker from './serviceWorker';
-import App from 'App';
+import { HelmetProvider } from 'react-helmet-async';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <HelmetProvider>
+        <Route />
+    </HelmetProvider>,
+    document.getElementById('root'),
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

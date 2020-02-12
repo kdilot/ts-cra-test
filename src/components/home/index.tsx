@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { SampleList } from 'common';
+import { Helmet } from 'react-helmet-async';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -25,6 +26,9 @@ const Home: React.FC = () => {
     const classes = useStyles();
     return (
         <>
+            <Helmet>
+                <title>메인 페이지</title>
+            </Helmet>
             <Header>
                 <Link to="/page/home">Header </Link>
             </Header>
