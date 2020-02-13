@@ -3,7 +3,7 @@ import { Header, Content, Footer } from './styles';
 import { Link } from 'react-router-dom';
 // import Grid from '@material-ui/core/Grid';
 // import { makeStyles } from '@material-ui/core/styles';
-import { Player } from 'common';
+import { Player, Editor } from 'common';
 import { Helmet } from 'react-helmet-async';
 
 // const useStyles = makeStyles(theme => ({
@@ -54,7 +54,7 @@ const Home: React.FC = () => {
                         </Grid>
                     ))}
                 </Grid> */}
-                <Player />
+                <Editor />
             </Content>
             <Footer>
                 <Link to="/page/footer">Footer </Link>
