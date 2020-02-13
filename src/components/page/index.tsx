@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container } from './styles';
-import { useParams, useRouteMatch, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 interface Param {
@@ -9,7 +9,7 @@ interface Param {
 
 const Page: React.FC = () => {
     const params = useParams<Param>();
-    const location = useRouteMatch();
+    // const location = useRouteMatch();
     const history = useHistory();
     useEffect(() => {
         setTimeout(() => {
@@ -18,9 +18,9 @@ const Page: React.FC = () => {
     }, [history]);
 
     window.localStorage.setItem('test', params.name);
-    console.log(location, params);
-    console.log(params);
-    console.log(location);
+    // console.log(location, params);
+    // console.log(params);
+    // console.log(location);
     return (
         <>
             <Helmet>

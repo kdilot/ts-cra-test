@@ -3,7 +3,7 @@ import { Header, Content, Footer } from './styles';
 import { Link } from 'react-router-dom';
 // import Grid from '@material-ui/core/Grid';
 // import { makeStyles } from '@material-ui/core/styles';
-import { Player, Editor } from 'common';
+import { Editor } from 'common';
 import { Helmet } from 'react-helmet-async';
 
 // const useStyles = makeStyles(theme => ({
