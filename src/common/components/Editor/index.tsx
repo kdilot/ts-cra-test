@@ -55,6 +55,11 @@ const Editor: React.FC = () => {
                 ],
             },
         });
+
+        const quill = quillInstance.current;
+        quill.on('text-change', () => {
+            console.log(quill.root.innerHTML);
+        });
     }, []);
 
     return (
