@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
-import { Home, Page, Error } from 'components';
-import Test from '../components/page/test';
 import { Helmet } from 'react-helmet-async';
 import { createBrowserHistory } from 'history';
+import loadable from '@loadable/component';
+const Home = loadable(() => import('components/home'));
+const Page = loadable(() => import('components/page'));
+const Error = loadable(() => import('components/error'));
+const Test = loadable(() => import('components/page/test'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
