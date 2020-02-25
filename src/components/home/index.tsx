@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import loadable from '@loadable/component';
 
-const Button = loadable(() => import('common/components/Button'));
+const ImageUpload = loadable(() => import('common/components/ImageUpload'));
 
 const Home: React.FC = () => {
     return (
@@ -26,9 +26,10 @@ const Home: React.FC = () => {
                     bottomSplitter={true}
                 /> */}
                 {/* <Editor /> */}
-                <Button text={'Download'} />
+                {/* <Button text={'Download'} />
                 <Button text={'Test'} />
-                <Button text={'Button'} />
+                <Button text={'Button'} /> */}
+                <ImageUpload />
             </Content>
             <Footer>
                 <Link to="/page/footer">Footer </Link>
