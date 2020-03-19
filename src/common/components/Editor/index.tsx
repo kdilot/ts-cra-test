@@ -43,6 +43,9 @@ const Editor: React.FC = () => {
             theme: 'bubble',
             placeholder: '내용을 작성해주세요...',
             modules: {
+                ImageResize: {
+                    modules: ['Resize', 'DisplaySize', 'Toolbar'],
+                },
                 toolbar: [
                     [{ header: 1 }, { header: 2 }],
                     ['bold', 'italic', 'underline', 'strike'],
