@@ -4,12 +4,12 @@ import { Text, Thumb, Img, ThumbsContainer } from './styles';
 
 const ImageUpload: React.FC = () => {
     const [files, setFiles] = useState([]);
+    // const [base64Files, setBaseFiles] = useState([]);
     const { getRootProps, getInputProps } = useDropzone({
         accept: 'image/*',
         maxSize: 1024 * 1024 * 5,
-        multiple: false,
+        multiple: true,
         onDrop: (acceptedFiles: any) => {
-            console.log(acceptedFiles);
             setFiles(
                 acceptedFiles.map((file: any) =>
                     Object.assign(file, {
@@ -17,27 +17,41 @@ const ImageUpload: React.FC = () => {
                     }),
                 ),
             );
+            acceptedFiles.map((file: any) => blobToBase64(file));
         },
         onDropRejected: () => {
             console.log('사이즈 제한');
         },
     });
 
+    const blobToBase64 = (file: any) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event: any) => {
+            Object.assign(file, {
+                base64: event.target.result,
+            });
+        };
+    };
+
+    useEffect(() => {
+        if (files.length > 0) {
+            console.log(files, 1);
+        }
+    }, [files]);
+
     const thumbs = files.map((file: any) => (
         <Thumb key={file.name}>
             <a href={file.preview} target="_black">
-                <Img src={file.preview} />
+                <Img src={file.base64} />
             </a>
         </Thumb>
     ));
 
-    useEffect(
-        () => () => {
-            // Make sure to revoke the data uris to avoid memory leaks
-            files.forEach((file: any) => URL.revokeObjectURL(file.preview));
-        },
-        [files],
-    );
+    useEffect(() => {
+        // Make sure to revoke the data uris to avoid memory leaks
+        files.forEach((file: any) => URL.revokeObjectURL(file.preview));
+    }, [files]);
 
     return (
         <>
