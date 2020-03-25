@@ -17,7 +17,7 @@ const ImageUpload: React.FC = () => {
                     }),
                 ),
             );
-            acceptedFiles.map((file: any) => blobToBase64(file));
+            // acceptedFiles.map((file: any) => blobToBase64(file));
         },
         onDropRejected: () => {
             console.log('사이즈 제한');
