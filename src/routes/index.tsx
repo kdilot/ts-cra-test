@@ -7,10 +7,12 @@ const Home = loadable(() => import('components/home'));
 const Page = loadable(() => import('components/page'));
 const Error = loadable(() => import('components/error'));
 const Test = loadable(() => import('components/page/test'));
+const HomeAnimation = loadable(() => import('common/components/HomeAnimation'));
+const Layout = loadable(() => import('common/components/HomeAnimation/Layout'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
-    history.listen(location => {
+    history.listen((location) => {
         // path 변경시 ga 전송
         console.log('location', location);
     });
@@ -30,6 +32,8 @@ const Root: React.FC = () => {
                     <Route path="/" exact component={Home} />
                     <Route path="/page/:name" exact component={Page} />
                     <Route path="/test" exact component={Test} />
+                    <Route path="/screen" exact component={HomeAnimation} />
+                    <Route path="/fullscreen" exact component={Layout} />
                     <Route component={Error} />
                 </Switch>
             </Router>
