@@ -5,11 +5,9 @@ const Layout: React.FC = () => {
     const [scrollTop, setScrollTop] = useState(0);
     const [scrollHeight, setScrollHeight] = useState(0);
     const [scrollClientHeight, setScrollClientHeight] = useState(0);
-    const [isHeaderFixed, setHeaderFixed] = useState(false);
     const [isCategoryFixed, setCategoryFixed] = useState(false);
 
     const onScroll = (e: any) => {
-        console.log(123123123);
         if (e.target.scrollTop !== scrollTop) {
             setScrollTop(e.target.scrollTop);
         }
@@ -26,21 +24,26 @@ const Layout: React.FC = () => {
     }, [scrollTop, scrollHeight, scrollClientHeight]);
 
     useEffect(() => {
-        setHeaderFixed(scrollTop > 50 ? true : false);
-        setCategoryFixed(scrollTop > 350 ? true : false);
+        setCategoryFixed(scrollTop > 300 ? true : false);
     }, [scrollTop]);
 
     return (
         <Container onScroll={onScroll}>
-            <LayoutContainer className={isHeaderFixed ? 'active' : ''}>
-                <HeaderLayout className={isHeaderFixed ? 'active' : ''}>
+            <LayoutContainer className={isCategoryFixed ? 'active' : ''}>
+                <HeaderLayout>
                     <HeaderTitle>작은가게 오래가게</HeaderTitle>
                     <HeaderSearch>검색</HeaderSearch>
                 </HeaderLayout>
-                <BannerLayout className={isHeaderFixed ? 'active' : ''}>
+                <BannerLayout className={isCategoryFixed ? 'active' : ''}>
                     Banner
                 </BannerLayout>
-                <CategoryLayout>Category</CategoryLayout>
+                <CategoryLayout className={isCategoryFixed ? 'active' : ''}>
+                    Category
+                </CategoryLayout>
+                <Contents>Contents</Contents>
+                <Contents>Contents</Contents>
+                <Contents>Contents</Contents>
+                <Contents>Contents</Contents>
                 <Contents>Contents</Contents>
                 <Contents>Contents</Contents>
                 <Contents>Contents</Contents>
@@ -64,6 +67,10 @@ const LayoutContainer = styled.div`
     width: 100%;
     height: 100%;
     margin-top: 100px;
+    &.active {
+        margin-top: 200px;
+    }
+    padding-bottom: 1rem;
 `;
 
 const HeaderLayout = styled.div`
@@ -77,9 +84,7 @@ const HeaderLayout = styled.div`
     padding: 0 1rem;
     position: fixed;
     top: 0;
-
-    &.active {
-    }
+    background: white;
 `;
 
 const HeaderSearch = styled.div`
@@ -101,6 +106,7 @@ const BannerLayout = styled.div`
 
     &.active {
         background: red;
+        height: 0;
     }
 `;
 
@@ -110,6 +116,11 @@ const CategoryLayout = styled.div`
     height: 40px;
     justify-content: center;
     align-items: center;
+    background: white;
+    &.active {
+        position: fixed;
+        top: 50px;
+    }
 `;
 
 const Contents = styled.div`
