@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 
 const Layout: React.FC = () => {
@@ -6,6 +7,10 @@ const Layout: React.FC = () => {
     const [scrollHeight, setScrollHeight] = useState(0);
     const [scrollClientHeight, setScrollClientHeight] = useState(0);
     const [isCategoryFixed, setCategoryFixed] = useState(false);
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+    const scrollPosition = useMemo(() => (scrollTop >= 300 ? true : false), [
+        scrollTop,
+    ]);
 
     const onScroll = (e: any) => {
         if (e.target.scrollTop !== scrollTop) {
@@ -24,11 +29,11 @@ const Layout: React.FC = () => {
     }, [scrollTop, scrollHeight, scrollClientHeight]);
 
     useEffect(() => {
-        setCategoryFixed(scrollTop >= 300 ? true : false);
-    }, [scrollTop]);
+        setCategoryFixed(scrollPosition);
+    }, [scrollPosition]);
 
     return (
-        <Container onScroll={onScroll}>
+        <Container onScroll={onScroll} className={isMobile ? 'isMobile' : ''}>
             <LayoutContainer>
                 <HeaderLayout>
                     <HeaderTitle>작은가게 오래가게</HeaderTitle>
@@ -55,17 +60,19 @@ const Layout: React.FC = () => {
 const Container = styled.div`
     display: flex;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+
+    &.isMobile {
+        height: 100vh;
+    }
 `;
 
 const LayoutContainer = styled.div`
     overflow: auto;
     width: 100%;
     height: 100%;
-    padding-bottom: 1rem;
 `;
 
 const HeaderLayout = styled.div`
