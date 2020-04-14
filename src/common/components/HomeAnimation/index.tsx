@@ -23,7 +23,7 @@ const LayoutContainer = styled.div`
     width: 400px;
     height: 600px;
     border: 1px solid black;
-    overflow: auto;
+    overflow: hidden;
 `;
 
 export default HomeAnimation;

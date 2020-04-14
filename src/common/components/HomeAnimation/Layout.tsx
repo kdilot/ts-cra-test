@@ -24,19 +24,17 @@ const Layout: React.FC = () => {
     }, [scrollTop, scrollHeight, scrollClientHeight]);
 
     useEffect(() => {
-        setCategoryFixed(scrollTop > 300 ? true : false);
+        setCategoryFixed(scrollTop >= 300 ? true : false);
     }, [scrollTop]);
 
     return (
         <Container onScroll={onScroll}>
-            <LayoutContainer className={isCategoryFixed ? 'active' : ''}>
+            <LayoutContainer>
                 <HeaderLayout>
                     <HeaderTitle>작은가게 오래가게</HeaderTitle>
                     <HeaderSearch>검색</HeaderSearch>
                 </HeaderLayout>
-                <BannerLayout className={isCategoryFixed ? 'active' : ''}>
-                    Banner
-                </BannerLayout>
+                <BannerLayout>Banner</BannerLayout>
                 <CategoryLayout className={isCategoryFixed ? 'active' : ''}>
                     Category
                 </CategoryLayout>
@@ -60,16 +58,13 @@ const Container = styled.div`
     height: 100vh;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 `;
 
 const LayoutContainer = styled.div`
     overflow: auto;
     width: 100%;
     height: 100%;
-    margin-top: 100px;
-    &.active {
-        margin-top: 200px;
-    }
     padding-bottom: 1rem;
 `;
 
@@ -82,7 +77,8 @@ const HeaderLayout = styled.div`
     flex-direction: row;
     justify-content: space-between;
     padding: 0 1rem;
-    position: fixed;
+    position: sticky;
+    position: -webkit-sticky;
     top: 0;
     background: white;
 `;
@@ -103,11 +99,6 @@ const BannerLayout = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &.active {
-        background: red;
-        height: 0;
-    }
 `;
 
 const CategoryLayout = styled.div`
@@ -118,7 +109,7 @@ const CategoryLayout = styled.div`
     align-items: center;
     background: white;
     &.active {
-        position: fixed;
+        position: sticky;
         top: 50px;
     }
 `;
