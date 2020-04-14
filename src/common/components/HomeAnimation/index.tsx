@@ -1,13 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import Layout from './Layout';
+import { useMediaQuery } from 'react-responsive';
 
 const HomeAnimation: React.FC = () => {
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
     return (
         <Container>
-            <LayoutContainer>
+            {isMobile ? (
                 <Layout />
-            </LayoutContainer>
+            ) : (
+                <LayoutContainer>
+                    <Layout />
+                </LayoutContainer>
+            )}
         </Container>
     );
 };
