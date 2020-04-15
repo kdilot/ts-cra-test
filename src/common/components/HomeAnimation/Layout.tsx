@@ -65,6 +65,7 @@ const Container = styled.div`
     align-items: center;
 
     &.isMobile {
+        /* 스크롤이 안먹음 */
         height: 100vh;
     }
 `;
