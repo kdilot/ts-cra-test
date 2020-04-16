@@ -25,6 +25,7 @@
         "react-dropzone-component": "^3.2.0",
         "react-dropzone-uploader": "^2.11.0",
         "react-helmet-async": "^1.0.4",
+        "react-horizontal-scrolling-menu": "^0.7.7",
         "react-images-upload": "^1.2.8",
         "react-player": "^1.15.2",
         "react-responsive": "^8.0.3",

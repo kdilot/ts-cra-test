@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
+import ScrollMenu from '../HomeAnimation/ScrollMenu';
 
 const Layout: React.FC = () => {
     const [scrollTop, setScrollTop] = useState(0);
@@ -41,7 +42,7 @@ const Layout: React.FC = () => {
                 </HeaderLayout>
                 <BannerLayout>Banner</BannerLayout>
                 <CategoryLayout className={isCategoryFixed ? 'active' : ''}>
-                    Category
+                    <ScrollMenu />
                 </CategoryLayout>
                 <Contents>Contents</Contents>
                 <Contents>Contents</Contents>
