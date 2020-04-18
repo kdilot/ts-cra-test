@@ -25,9 +25,9 @@ const Layout: React.FC = () => {
         }
     };
 
-    useEffect(() => {
-        console.log(scrollTop, scrollClientHeight, scrollHeight);
-    }, [scrollTop, scrollHeight, scrollClientHeight]);
+    // useEffect(() => {
+    //     console.log(scrollTop, scrollClientHeight, scrollHeight);
+    // }, [scrollTop, scrollHeight, scrollClientHeight]);
 
     useEffect(() => {
         setCategoryFixed(scrollPosition);
