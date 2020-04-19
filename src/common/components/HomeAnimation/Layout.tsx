@@ -8,7 +8,7 @@ const Layout: React.FC = () => {
     const [scrollHeight, setScrollHeight] = useState(0);
     const [scrollClientHeight, setScrollClientHeight] = useState(0);
     const [isCategoryFixed, setCategoryFixed] = useState(false);
-    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' }); // 모바일 사이즈 체크
     const scrollPosition = useMemo(() => (scrollTop >= 300 ? true : false), [
         scrollTop,
     ]);
