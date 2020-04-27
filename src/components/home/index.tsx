@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Content } from './styles';
 import styled from 'styled-components';
-import { Test } from 'api/test';
 
 // const Editor = loadable(() => import('common/components/Editor'));
 const ARRAY = [
