@@ -36,6 +36,7 @@ const Layout: React.FC = () => {
     return (
         <Container onScroll={onScroll} className={isMobile ? 'isMobile' : ''}>
             <LayoutContainer>
+                {/* 스크롤시 생기고 없어지게 */}
                 <HeaderLayout>
                     <HeaderTitle>작은가게 오래가게</HeaderTitle>
                     <HeaderSearch>검색</HeaderSearch>
