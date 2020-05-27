@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Content } from './styles';
 import styled from 'styled-components';
+import { Test } from 'api/test';
+import { TwitterShareButton, FacebookShareButton } from 'react-share';
+import Clipboard from 'react-clipboard.js';
 
 // const Editor = loadable(() => import('common/components/Editor'));
 const ARRAY = [
@@ -32,24 +35,13 @@ const Home: React.FC = () => {
         }
     };
 
-    // useEffect(() => {
-    //     Test();
-    // });
+    useEffect(() => {
+        Test();
+    });
 
     return (
         <>
             <Content>
-                {/* <FlatList
-                    data={DATA}
-                    dataSplitter={<DividerLayout />}
-                    headerSplitter={true}
-                    bottomSplitter={true}
-                /> */}
-                {/* <Editor /> */}
-                {/* <Button text={'Download'} />
-                <Button text={'Test'} />
-                <Button text={'Button'} /> */}
-                {/* <ImageUpload /> */}
                 <Input>
                     <input onChange={(e) => onChange(e)}></input>
                 </Input>
@@ -67,6 +59,29 @@ const Home: React.FC = () => {
                         );
                     })}
                 </List>
+                <Share>
+                    <TwitterShareButton url={'http://naver.com'}>
+                        <Box>T</Box>
+                    </TwitterShareButton>
+                    <FacebookShareButton url={'http://naver.com'}>
+                        <Box>F</Box>
+                    </FacebookShareButton>
+                    <Clipboard data-clipboard-text="http://naver.com">
+                        <Box>URL</Box>
+                    </Clipboard>
+                    <button
+                        onClick={() =>
+                            window.open(
+                                'https://story.kakao.com/share?url=https://naver.com',
+                                '_blank',
+                                `width=550 height=400 left=${
+                                    (window.screen.width - 550) / 2
+                                } top=${(window.screen.height - 400) / 2}`,
+                            )
+                        }>
+                        <Box>TEST</Box>
+                    </button>
+                </Share>
             </Content>
         </>
     );
@@ -82,6 +97,34 @@ const List = styled.div`
 
 const Special = styled.span`
     color: red;
+`;
+
+const Share = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    button ~ button {
+        margin-left: 5px;
+    }
+`;
+
+const Box = styled.div`
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-family: none;
 `;
 
 export default Home;

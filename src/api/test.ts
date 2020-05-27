@@ -6,7 +6,6 @@ export const Test = async () => {
             'https://openapi.naver.com/v1/search/shop.json&query=test&display=10',
             {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
                     'X-Naver-Client-Id': 'Wy87tIfaIeqQIzd_rC0V',
                     'X-Naver-Client-Secret': 'FwR5RniWNY',
                 },
