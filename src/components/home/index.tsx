@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Content } from './styles';
 import { img as testImg } from './test';
+import loadImage from 'blueimp-load-image';
 
 // const Editor = loadable(() => import('common/components/Editor'));
 const Home: React.FC = () => {
@@ -173,6 +174,15 @@ const Home: React.FC = () => {
         const ggg2 = await getImageOrientation(file642);
         console.log(ggg);
         console.log(ggg2);
+        loadImage(
+            file64,
+            (img: any, data: any) => {
+                // document.body.appendChild(img);
+                console.log(data);
+                console.log(data.exif.get('Orientation'));
+            },
+            { orientation: true, meta: true },
+        );
     };
 
     useEffect(() => {
@@ -189,7 +199,7 @@ const Home: React.FC = () => {
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
-                    <img src={testImg} alt="asdf" />
+                    <img src={testImg} style={{ width: '300px' }} alt="asdf" />
                     <img src={newfile} alt="asdf" />
                 </div>
             </Content>
