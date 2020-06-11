@@ -5,6 +5,67 @@ import { img as testImg } from './test';
 // const Editor = loadable(() => import('common/components/Editor'));
 const Home: React.FC = () => {
     const [newfile, setFiles] = useState('');
+    const base64toFile = (dataurl: any, fileName: any) => {
+        let arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]),
+            n = bstr.length,
+            u8arr = new Uint8Array(n);
+
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+
+        // Edge/IE는 File()을 지원하지 않습니다. https://stackoverflow.com/questions/49890537/javascript-edge-browser-typeerror-function-expected
+        // return new Blob([u8arr], fileName, { type: mime});
+
+        return new Blob([u8arr], { type: mime });
+    };
+    const getImageOrientation = async (file: any) => {
+        const orientation = await new Promise(function (resolve, reject) {
+            let reader = new FileReader();
+            reader.onload = (event: any) => {
+                let view = new DataView(event.target.result);
+
+                if (view.getUint16(0, false) !== 0xffd8) resolve(-2);
+
+                let length = view.byteLength,
+                    offset = 2;
+
+                while (offset < length) {
+                    let marker = view.getUint16(offset, false);
+                    offset += 2;
+
+                    if (marker === 0xffe1) {
+                        if (
+                            view.getUint32((offset += 2), false) !== 0x45786966
+                        ) {
+                            resolve(-1);
+                        }
+                        let little =
+                            view.getUint16((offset += 6), false) === 0x4949;
+                        offset += view.getUint32(offset + 4, little);
+                        let tags = view.getUint16(offset, little);
+                        offset += 2;
+
+                        for (let i = 0; i < tags; i++)
+                            if (
+                                view.getUint16(offset + i * 12, little) ===
+                                0x0112
+                            )
+                                resolve(
+                                    view.getUint16(offset + i * 12 + 8, little),
+                                );
+                    } else if ((marker & 0xff00) !== 0xff00) break;
+                    else offset += view.getUint16(offset, false);
+                }
+                resolve(-1);
+            };
+
+            reader.readAsArrayBuffer(file.slice(0, 64 * 1024));
+        });
+        return orientation;
+    };
     const rotateImage: any = async (base64: any) => {
         const filename = await new Promise(function (resolve, reject) {
             let image = new Image();
@@ -35,22 +96,6 @@ const Home: React.FC = () => {
                 );
                 resolve(resizedDataUrl);
             };
-            // let reader = new FileReader();
-            // reader.readAsDataURL(file);
-            // reader.onload = function (event: any) {
-            //     let dataUrl = event.target.result;
-            //     console.log(dataUrl);
-            //     let image = new Image();
-            //     image.src = dataUrl;
-            //     image.onload = function () {
-            //         let resizedDataUrl = resizeImage(
-            //             image,
-            //             maxWidth,
-            //             maxHeight,
-            //             0.7,
-            //         resolve(resizedDataUrl);
-            //     };
-            // };
         });
         return filename;
     };
@@ -119,10 +164,15 @@ const Home: React.FC = () => {
     };
 
     const start = async () => {
+        const file64 = base64toFile(testImg, 'asdf');
+        const ggg = await getImageOrientation(file64);
         const test = await rotateImage(testImg);
-        console.log(test);
         const file = await resize(test, 480, 320, -1);
         setFiles(file);
+        const file642 = base64toFile(file, 'asdf');
+        const ggg2 = await getImageOrientation(file642);
+        console.log(ggg);
+        console.log(ggg2);
     };
 
     useEffect(() => {
