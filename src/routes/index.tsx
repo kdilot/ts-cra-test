@@ -7,6 +7,7 @@ const Home = loadable(() => import('components/home'));
 const Page = loadable(() => import('components/page'));
 const Error = loadable(() => import('components/error'));
 const Test = loadable(() => import('components/page/test'));
+const Csv = loadable(() => import('components/page/csv'));
 const HomeAnimation = loadable(() => import('common/components/HomeAnimation'));
 const Layout = loadable(() => import('common/components/HomeAnimation/Layout'));
 
@@ -32,6 +33,7 @@ const Root: React.FC = () => {
                     <Route path="/" exact component={Home} />
                     <Route path="/page/:name" exact component={Page} />
                     <Route path="/test" exact component={Test} />
+                    <Route path="/csv" exact component={Csv} />
                     <Route path="/screen" exact component={HomeAnimation} />
                     <Route path="/fullscreen" exact component={Layout} />
                     <Route component={Error} />
