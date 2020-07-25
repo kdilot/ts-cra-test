@@ -58,6 +58,26 @@ const RightLayout = styled(Box as any)`
     flex: 1;
     overflow: auto;
     height: 100%;
+    /* .layout {
+        span:first-of-type {
+            &::-webkit-scrollbar {
+                height: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 3px;
+                background: #aaa;
+            }
+            &::-webkit-scrollbar-button {
+                width: 0;
+                height: 0;
+            }
+        }
+    } */
 `;
 
 const Example = styled(Box as any)`
