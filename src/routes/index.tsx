@@ -9,6 +9,7 @@ const Error = loadable(() => import('components/error'));
 const Test = loadable(() => import('components/page/test'));
 const Csv = loadable(() => import('components/page/Csv'));
 const Codeblock = loadable(() => import('components/page/Codeblock'));
+const BoardWrite = loadable(() => import('modules/board/BoardWrite'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
@@ -34,6 +35,7 @@ const Root: React.FC = () => {
                     <Route path="/test" exact component={Test} />
                     <Route path="/csv" exact component={Csv} />
                     <Route path="/codeblock" exact component={Codeblock} />
+                    <Route path="/boardwrite" exact component={BoardWrite} />
                     <Route component={Error} />
                 </Switch>
             </Router>

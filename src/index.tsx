@@ -4,6 +4,7 @@ import './index.css';
 import Route from 'routes';
 import * as serviceWorker from './serviceWorker';
 import { HelmetProvider } from 'react-helmet-async';
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
     <HelmetProvider>
