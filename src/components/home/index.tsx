@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ImageUploader from 'modules/imageUpload/index';
-import Background from 'modules/imageUpload/svg/Background';
 
 const Home: React.FC = () => {
+    const [pictures] = useState<any[]>([
+        'https://image-uploader-bucket-prod.s3.ap-northeast-2.amazonaws.com/backup/jocad1594358377496748.jpeg',
+    ]);
     return (
-        <>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100vh',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}>
             <ImageUploader
-                // buttonStyles={'TEST'}
-                buttonText={'TEST'}
-                withIcon={false}
-                withLabel={false}
+                style={{ width: '550px' }}
                 withPreview={true}
-                maxFileSize={5242880 * 10}
-                imgExtension={['.jpg', '.jpeg', '.png', '.gif']}
-                onChange={(e) => console.log(e)}
+                maxFileSize={5}
+                imgExtension={['.jpg', '.jpeg', '.png']}
+                defaultImages={pictures}
+                limit={10}
+                onChange={(file: File[], data: any[]) =>
+                    console.log(file, data)
+                }
             />
-            <div style={{ width: '50px' }}>
-                <Background />
-            </div>
-        </>
+        </div>
     );
 };
 
