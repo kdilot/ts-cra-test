@@ -4,9 +4,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 300px auto;
     transition: all 0.3s ease-in;
-    background: yellow;
 }
 
 .container input {
@@ -70,9 +68,9 @@
     background: rgba(0, 0, 0, 0.5);
     border: none;
     cursor: pointer;
-    width: 100px;
-    height: 100px;
-    padding: 35px;
+    width: 90px;
+    height: 90px;
+    padding: 30px;
 }
 
 .file-preview-container:hover .file-remove {
@@ -84,6 +82,7 @@
     object-fit: cover;
     opacity: 1;
     transition: all 0.2s ease-in;
+    padding: 5px;
 }
 
 .error-container {

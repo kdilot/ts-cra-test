@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { Input, Select, Space, Rate, DatePicker, Button, Upload } from 'antd';
+import { Input, Select, Space, Rate, DatePicker, Button } from 'antd';
 import styled from 'styled-components';
 import {
     BOARD_TYPE_NAME,
@@ -8,6 +8,7 @@ import {
     BOARD_FAQ_TYPE,
     BOARD_FAQ_TYPE_NAME,
 } from './global';
+import ImageUploader from 'modules/imageUpload/index';
 const { Option } = Select;
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
@@ -15,18 +16,20 @@ const { RangePicker } = DatePicker;
 const BoardWrite: React.FC = () => {
     const [type, setType] = useState<string>('');
     const [subType, setSubType] = useState<string>('');
-    const [startDate, setStartDate] = useState<string>('');
-    const [endDate, setEndDate] = useState<string>('');
+    const [eventStartDate, setEventStartDate] = useState<string>('');
+    const [eventEndDate, setEventEndDate] = useState<string>('');
+    const [eventKeyword, setEventKeyword] = useState<string>('');
     const [rate, setRate] = useState<number>(0);
+    const [images, setImages] = useState<string[]>([]);
 
     const onDatePick = (date: any) => {
         if (!date) {
-            setStartDate('');
-            setEndDate('');
+            setEventStartDate('');
+            setEventEndDate('');
             return;
         }
-        setStartDate(date[0]);
-        setEndDate(date[1]);
+        setEventStartDate(date[0]);
+        setEventEndDate(date[1]);
     };
 
     useEffect(() => {
@@ -34,8 +37,8 @@ const BoardWrite: React.FC = () => {
             setSubType('');
         }
         if (type !== 'event') {
-            setStartDate('');
-            setEndDate('');
+            setEventStartDate('');
+            setEventEndDate('');
         }
         if (type !== 'review') {
             setRate(0);
@@ -56,12 +59,24 @@ const BoardWrite: React.FC = () => {
                             </Option>
                         ))}
                     </Select>
+                    {type === 'review' && <Rate onChange={setRate} />}
                     {type === 'event' && (
-                        <RangePicker
-                            format="YYYY-MM-DD"
-                            onChange={onDatePick}
-                            placeholder={['시작일', '종료일']}
-                        />
+                        <>
+                            <RangePicker
+                                format="YYYY-MM-DD"
+                                onChange={onDatePick}
+                                placeholder={['시작일', '종료일']}
+                            />
+                            <Input
+                                style={{ width: '400px' }}
+                                value={eventKeyword}
+                                onChange={(e) =>
+                                    setEventKeyword(e.target.value)
+                                }
+                                placeholder="키워드"
+                                allowClear={true}
+                            />
+                        </>
                     )}
                     {type === 'faq' && (
                         <Select
@@ -77,27 +92,17 @@ const BoardWrite: React.FC = () => {
                     )}
                     <Input placeholder="제목" allowClear={true} />
                     <TextArea rows={15} placeholder="내용" />
-                    <Upload
-                        // action="https://f1qwygaf0l.execute-api.ap-northeast-2.amazonaws.com/prod/images"
-                        listType="picture-card"
-                        multiple={true}
-                        // fileList={[
-                        //     {
-                        //         uid: 'aasdf',
-                        //         size: 111,
-                        //         type: 'asdfasf',
-                        //         name: 'asdasdf',
-                        //         thumbUrl:
-                        //             'http://www.amipure.com/data/goods/20/06/27/1000000037/1000000037_main_04.png',
-                        //     },
-                        // ]}
-                        onChange={(e) => console.log(e)}>
-                        <div>
-                            <div className="ant-upload-text">Upload</div>
-                        </div>
-                    </Upload>
+                    <ImageUploader
+                        withPreview={true}
+                        maxFileSize={5}
+                        imgExtension={['.jpg', '.jpeg', '.png']}
+                        defaultImages={images}
+                        limit={10}
+                        onChange={(file: File[], data: any[]) =>
+                            console.log(file, data)
+                        }
+                    />
                 </Space>
-                {type === 'review' && <Rate onChange={setRate} />}
                 <ButtonGroup>
                     <Button type="primary">등록</Button>
                 </ButtonGroup>
@@ -111,7 +116,6 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     width: 800px;
-    height: 600px;
     margin: 0 auto;
     background: lightyellow;
     margin-top: 5rem;
