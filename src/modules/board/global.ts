@@ -14,3 +14,11 @@ export const BOARD_FAQ_TYPE_NAME = {
     pay: '취소/환불/교환/반품',
     etc: '기타',
 };
+
+export const BOARD_CONTENT_TYPE = {
+    notice: { useContent: false, useImages: true },
+    direct: { useContent: true, useImages: true },
+    faq: { useContent: true, useImages: false },
+    review: { useContent: true, useImages: true },
+    event: { useContent: false, useImages: true },
+};

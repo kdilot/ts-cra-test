@@ -13,7 +13,7 @@ interface Props {
     withPreview?: any;
     name?: string;
     accept?: string;
-    onChange?: (files: File[], data: string[]) => void;
+    onChange?: (files: File[], base: string[]) => void;
     style?: object;
     buttonStyles?: object;
     errorClassName?: string;
@@ -187,10 +187,6 @@ const ImageUpload: React.FC<Props> = ({
     const triggerFileUpload = () => {
         inputElement.current?.click();
     };
-
-    useEffect(() => {
-        setPictures([...defaultImages]);
-    }, [defaultImages]);
 
     useEffect(() => {
         onChange(files, pictures);

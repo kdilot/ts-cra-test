@@ -9,7 +9,7 @@ const Error = loadable(() => import('components/error'));
 const Test = loadable(() => import('components/page/test'));
 const Csv = loadable(() => import('components/page/Csv'));
 const Codeblock = loadable(() => import('components/page/Codeblock'));
-const BoardWrite = loadable(() => import('modules/board/BoardWrite'));
+const BoardWrite = loadable(() => import('modules/board'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();

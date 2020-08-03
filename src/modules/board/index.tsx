@@ -7,6 +7,7 @@ import {
     BOARD_TYPE,
     BOARD_FAQ_TYPE,
     BOARD_FAQ_TYPE_NAME,
+    BOARD_CONTENT_TYPE,
 } from './global';
 import ImageUploader from 'modules/imageUpload/index';
 const { Option } = Select;
@@ -14,6 +15,8 @@ const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
 const BoardWrite: React.FC = () => {
+    const [title, setTitle] = useState<string>('');
+    const [content, setContent] = useState<string>('');
     const [type, setType] = useState<string>('');
     const [subType, setSubType] = useState<string>('');
     const [eventStartDate, setEventStartDate] = useState<string>('');
@@ -22,7 +25,7 @@ const BoardWrite: React.FC = () => {
     const [rate, setRate] = useState<number>(0);
     const [images, setImages] = useState<string[]>([]);
 
-    const onDatePick = (date: any) => {
+    const onDatePick = (date: any): void => {
         if (!date) {
             setEventStartDate('');
             setEventEndDate('');
@@ -32,17 +35,89 @@ const BoardWrite: React.FC = () => {
         setEventEndDate(date[1]);
     };
 
-    useEffect(() => {
+    const onActive = (): void => {
+        if (!type) {
+            alert('Type is Empty!');
+            return;
+        }
+        if (!onActiveSubType(type)) {
+            return;
+        }
+        if (!onActiveEvent(type)) {
+            return;
+        }
+        if (!title) {
+            alert('Title is Empty!');
+            return;
+        }
+        if (!content) {
+            alert('Content is Empty!');
+            return;
+        }
+        const data = {
+            title,
+            content,
+            type,
+            subType,
+            eventStartDate,
+            eventEndDate,
+            eventKeyword,
+            rate,
+            images,
+        };
+        console.log(data);
+    };
+
+    const onActiveSubType = (type: string) => {
+        if (type === 'faq' && !subType) {
+            alert('FAQ SubType is Empty!');
+            return false;
+        }
+        return true;
+    };
+
+    const onActiveEvent = (type: string) => {
+        if (type === 'event') {
+            if (!eventStartDate || !eventEndDate) {
+                alert('Please Check the Event Date!');
+                return false;
+            }
+            if (!eventKeyword) {
+                alert('Event keyword is Empty!');
+                return false;
+            }
+        }
+        return true;
+    };
+
+    const onChangeType = (type: string) => {
         if (type !== 'faq') {
             setSubType('');
         }
         if (type !== 'event') {
             setEventStartDate('');
             setEventEndDate('');
+            setEventKeyword('');
         }
         if (type !== 'review') {
             setRate(0);
         }
+        if (
+            BOARD_CONTENT_TYPE[type] &&
+            !BOARD_CONTENT_TYPE[type]['useContent']
+        ) {
+            setContent('');
+        }
+        if (
+            BOARD_CONTENT_TYPE[type] &&
+            !BOARD_CONTENT_TYPE[type]['useImages']
+        ) {
+            setImages([]);
+        }
+    };
+
+    useEffect(() => {
+        onChangeType(type);
     }, [type]);
 
     return (
@@ -90,21 +165,37 @@ const BoardWrite: React.FC = () => {
                             ))}
                         </Select>
                     )}
-                    <Input placeholder="제목" allowClear={true} />
-                    <TextArea rows={15} placeholder="내용" />
-                    <ImageUploader
-                        withPreview={true}
-                        maxFileSize={5}
-                        imgExtension={['.jpg', '.jpeg', '.png']}
-                        defaultImages={images}
-                        limit={10}
-                        onChange={(file: File[], data: any[]) =>
-                            console.log(file, data)
-                        }
+                    <Input
+                        placeholder="제목"
+                        allowClear={true}
+                        onChange={(e) => setTitle(e.target.value)}
                     />
+                    {BOARD_CONTENT_TYPE[type] &&
+                        BOARD_CONTENT_TYPE[type]['useContent'] && (
+                            <TextArea
+                                rows={15}
+                                placeholder="내용"
+                                onChange={(e) => setContent(e.target.value)}
+                            />
+                        )}
+                    {BOARD_CONTENT_TYPE[type] &&
+                        BOARD_CONTENT_TYPE[type]['useImages'] && (
+                            <ImageUploader
+                                withPreview={true}
+                                maxFileSize={5}
+                                imgExtension={['.jpg', '.jpeg', '.png']}
+                                defaultImages={images}
+                                limit={10}
+                                onChange={(file: File[], base: any[]) =>
+                                    setImages(base)
+                                }
+                            />
+                        )}
                 </Space>
                 <ButtonGroup>
-                    <Button type="primary">등록</Button>
+                    <Button type="primary" onClick={onActive}>
+                        등록
+                    </Button>
                 </ButtonGroup>
             </WriteGroup>
         </Container>
