@@ -2,12 +2,14 @@ import React from 'react';
 import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import loadable from '@loadable/component';
+
 const Home = loadable(() => import('components/home'));
 const Error = loadable(() => import('components/error'));
 const Test = loadable(() => import('components/page/test'));
 const Csv = loadable(() => import('components/page/Csv'));
 const Codeblock = loadable(() => import('components/page/Codeblock'));
 const BoardWrite = loadable(() => import('modules/board'));
+const DraftEditor = loadable(() => import('modules/editor'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
@@ -30,6 +32,7 @@ const Root: React.FC = () => {
                     <Route path="/csv" exact component={Csv} />
                     <Route path="/codeblock" exact component={Codeblock} />
                     <Route path="/boardwrite" exact component={BoardWrite} />
+                    <Route path="/editor" exact component={DraftEditor} />
                     <Route component={Error} />
                 </Switch>
             </Router>
