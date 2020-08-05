@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Route from 'routes';
 import * as serviceWorker from './serviceWorker';
 import { HelmetProvider } from 'react-helmet-async';
-// import 'antd/dist/antd.css';
+import 'antd/dist/antd.css';
 import './index.css';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 

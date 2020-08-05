@@ -5,11 +5,11 @@ import loadable from '@loadable/component';
 
 const Home = loadable(() => import('components/home'));
 const Error = loadable(() => import('components/error'));
-const Test = loadable(() => import('components/page/test'));
-const Csv = loadable(() => import('components/page/Csv'));
-const Codeblock = loadable(() => import('components/page/Codeblock'));
+const CategoryList = loadable(() => import('components/categoryList'));
+const Csv = loadable(() => import('page/Csv'));
+const Codeblock = loadable(() => import('page/Codeblock'));
 const BoardWrite = loadable(() => import('modules/board'));
-const DraftEditor = loadable(() => import('modules/editor'));
+const DraftEditor = loadable(() => import('modules/draftEditor'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
@@ -26,15 +26,31 @@ const Root: React.FC = () => {
     return (
         <BrowserRouter>
             <Router history={history}>
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/test" exact component={Test} />
-                    <Route path="/csv" exact component={Csv} />
-                    <Route path="/codeblock" exact component={Codeblock} />
-                    <Route path="/boardwrite" exact component={BoardWrite} />
-                    <Route path="/editor" exact component={DraftEditor} />
-                    <Route component={Error} />
-                </Switch>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '100vh',
+                    }}>
+                    <Switch>
+                        <Route path="/" exact component={Home} />
+                        <Route
+                            path="/category-list"
+                            exact
+                            component={CategoryList}
+                        />
+                        <Route path="/csv" exact component={Csv} />
+                        <Route path="/codeblock" exact component={Codeblock} />
+                        <Route
+                            path="/boardwrite"
+                            exact
+                            component={BoardWrite}
+                        />
+                        <Route path="/editor" exact component={DraftEditor} />
+                        <Route component={Error} />
+                    </Switch>
+                </div>
             </Router>
         </BrowserRouter>
     );
