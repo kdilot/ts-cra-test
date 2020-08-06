@@ -25,8 +25,8 @@ export const fileImageResize = async (file: File) => {
         let reader = new FileReader();
 
         reader.onload = async (e: any) => {
-            const test = await base64ImageResize(e.target.result);
-            resolve(base64toFile(test, 'img'));
+            const resized = await base64ImageResize(e.target.result);
+            resolve(base64toFile(resized, 'img'));
         };
         reader.readAsDataURL(file);
     });

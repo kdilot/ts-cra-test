@@ -24,7 +24,6 @@ const Editors: React.FC = () => {
         // console.log(file);
         return new Promise(async (resolve, reject) => {
             const resized = await fileImageResize(file);
-            console.log(resized);
 
             const link = await ApiImages(resized);
             resolve({
@@ -54,6 +53,8 @@ const Editors: React.FC = () => {
                     image: {
                         uploadCallback: uploadImageCallBack,
                         previewImage: true,
+                        alignmentEnabled: false,
+                        inputAccept: 'image/jpeg,image/jpg,image/png',
                         defaultSize: {
                             height: 'auto',
                             width: '100%',
