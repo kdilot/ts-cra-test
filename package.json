@@ -43,6 +43,7 @@
         "react-helmet-async": "^1.0.4",
         "react-horizontal-scrolling-menu": "^0.7.7",
         "react-images-upload": "^1.2.8",
+        "react-lottie": "^1.2.3",
         "react-player": "^1.15.2",
         "react-responsive": "^8.0.3",
         "react-router-dom": "^5.1.2",
@@ -77,6 +78,7 @@
         "@types/draftjs-to-html": "^0.8.0",
         "@types/html-to-draftjs": "^1.4.0",
         "@types/quill": "^2.0.3",
+        "@types/react-lottie": "^1.2.5",
         "@types/react-responsive": "^8.0.2",
         "@types/styled-components": "^4.4.3"
     }

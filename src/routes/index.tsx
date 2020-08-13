@@ -10,6 +10,7 @@ const Csv = loadable(() => import('page/Csv'));
 const Codeblock = loadable(() => import('page/Codeblock'));
 const BoardWrite = loadable(() => import('modules/board'));
 const DraftEditor = loadable(() => import('modules/draftEditor'));
+const Lotties = loadable(() => import('components/lottie'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
@@ -48,6 +49,7 @@ const Root: React.FC = () => {
                             component={BoardWrite}
                         />
                         <Route path="/editor" exact component={DraftEditor} />
+                        <Route path="/lottie" exact component={Lotties} />
                         <Route component={Error} />
                     </Switch>
                 </div>
