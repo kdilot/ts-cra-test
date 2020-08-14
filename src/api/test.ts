@@ -1,20 +1,11 @@
-import axios from 'axios';
+import { API } from './global';
 
 export const Test = async () => {
-    return await axios
-        .get(
-            'https://openapi.naver.com/v1/search/shop.json&query=test&display=10',
-            {
-                headers: {
-                    'X-Naver-Client-Id': 'Wy87tIfaIeqQIzd_rC0V',
-                    'X-Naver-Client-Secret': 'FwR5RniWNY',
-                },
-            },
-        )
+    return await API.get('', {})
         .then((res: any) => {
             return console.log(res);
         })
         .catch((err) => {
-            return console.log(err);
+            return console.log(err.response);
         });
 };
