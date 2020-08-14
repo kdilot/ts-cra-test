@@ -6,6 +6,7 @@ export const Test = async () => {
             return console.log(res);
         })
         .catch((err) => {
-            return console.log(err.response);
+            console.log(err.response);
+            return;
         });
 };

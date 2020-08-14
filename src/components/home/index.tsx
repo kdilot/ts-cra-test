@@ -1,8 +1,6 @@
 import React from 'react';
-import { Test } from 'api/test';
 
 const Home: React.FC = () => {
-    Test().then();
     return (
         <div
             style={{
