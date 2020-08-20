@@ -19,15 +19,3 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
 }
-
-.dzu-dropzone {
-    overflow-x: hidden;
-}
-
-.dzu-submitButtonContainer {
-    display: none;
-}
-
-.dzu-inputLabelWithFiles {
-    margin: 10px;
-}
