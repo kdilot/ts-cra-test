@@ -21,37 +21,4 @@ const CSV: React.FC = () => (
         ;
     </div>
 
-const CSV: React.FC = () => (
-    <div>
-        <CSVLink data={data} headers={headers}>
-            Download me
-        </CSVLink>
-        ;
-    </div>
-
-const CSV: React.FC = () => (
-    <div>
-        <CSVLink data={data} headers={headers}>
-            Download me
-        </CSVLink>
-        ;
-    </div>
-
-const CSV: React.FC = () => (
-    <div>
-        <CSVLink data={data} headers={headers}>
-            Download me
-        </CSVLink>
-        ;
-    </div>
-
-const CSV: React.FC = () => (
-    <div>
-        <CSVLink data={data} headers={headers}>
-            Download me
-        </CSVLink>
-        ;
-    </div>
-);
-
 export default CSV;`;
