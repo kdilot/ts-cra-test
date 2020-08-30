@@ -16,9 +16,9 @@ export const BOARD_FAQ_TYPE_NAME = {
 };
 
 export const BOARD_CONTENT_TYPE = {
-    notice: { useContent: false, useImages: true },
+    notice: { useContent: true, useImages: true },
     direct: { useContent: true, useImages: true },
-    faq: { useContent: true, useImages: false },
+    faq: { useContent: true, useImages: true },
     review: { useContent: true, useImages: true },
-    event: { useContent: false, useImages: true },
+    event: { useContent: true, useImages: true },
 };
