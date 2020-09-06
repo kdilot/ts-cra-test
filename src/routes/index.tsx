@@ -3,14 +3,14 @@ import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import loadable from '@loadable/component';
 
-const Home = loadable(() => import('components/home'));
-const Error = loadable(() => import('components/error'));
-const CategoryList = loadable(() => import('components/categoryList'));
-const Csv = loadable(() => import('page/Csv'));
-const Codeblock = loadable(() => import('page/Codeblock'));
+const Home = loadable(() => import('pages/home'));
+const Error = loadable(() => import('pages/error'));
+const Csv = loadable(() => import('pages/csvDownload'));
+const Codeblock = loadable(() => import('pages/codeblock'));
+const Lotties = loadable(() => import('pages/lottie'));
 const BoardWrite = loadable(() => import('modules/board'));
 const DraftEditor = loadable(() => import('modules/draftEditor'));
-const Lotties = loadable(() => import('components/lottie'));
+const ImageUploader = loadable(() => import('pages/imageUploader'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
@@ -36,20 +36,20 @@ const Root: React.FC = () => {
                     }}>
                     <Switch>
                         <Route path="/" exact component={Home} />
-                        <Route
-                            path="/category-list"
-                            exact
-                            component={CategoryList}
-                        />
                         <Route path="/csv" exact component={Csv} />
+                        <Route path="/board" exact component={BoardWrite} />
                         <Route path="/codeblock" exact component={Codeblock} />
                         <Route
-                            path="/boardwrite"
+                            path="/editor/draftjs"
                             exact
-                            component={BoardWrite}
+                            component={DraftEditor}
                         />
-                        <Route path="/editor" exact component={DraftEditor} />
                         <Route path="/lottie" exact component={Lotties} />
+                        <Route
+                            path="/image-uploader"
+                            exact
+                            component={ImageUploader}
+                        />
                         <Route component={Error} />
                     </Switch>
                 </div>
