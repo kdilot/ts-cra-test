@@ -134,25 +134,6 @@ const BoardWrite: React.FC = () => {
                             </Option>
                         ))}
                     </Select>
-                    {type === 'review' && <Rate onChange={setRate} />}
-                    {type === 'event' && (
-                        <>
-                            <RangePicker
-                                format="YYYY-MM-DD"
-                                onChange={onDatePick}
-                                placeholder={['시작일', '종료일']}
-                            />
-                            <Input
-                                style={{ width: '400px' }}
-                                value={eventKeyword}
-                                onChange={(e) =>
-                                    setEventKeyword(e.target.value)
-                                }
-                                placeholder="키워드"
-                                allowClear={true}
-                            />
-                        </>
-                    )}
                     {type === 'faq' && (
                         <Select
                             placeholder="FAQ종류"
@@ -165,32 +146,39 @@ const BoardWrite: React.FC = () => {
                             ))}
                         </Select>
                     )}
+                    <RangePicker
+                        format="YYYY-MM-DD"
+                        onChange={onDatePick}
+                        placeholder={['시작일', '종료일']}
+                    />
+                    <Input
+                        style={{ width: '400px' }}
+                        value={eventKeyword}
+                        onChange={(e) => setEventKeyword(e.target.value)}
+                        placeholder="키워드"
+                        allowClear={true}
+                    />
                     <Input
                         placeholder="제목"
                         allowClear={true}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-                    {BOARD_CONTENT_TYPE[type] &&
-                        BOARD_CONTENT_TYPE[type]['useContent'] && (
-                            <TextArea
-                                rows={15}
-                                placeholder="내용"
-                                onChange={(e) => setContent(e.target.value)}
-                            />
-                        )}
-                    {BOARD_CONTENT_TYPE[type] &&
-                        BOARD_CONTENT_TYPE[type]['useImages'] && (
-                            <ImageUploader
-                                withPreview={true}
-                                maxFileSize={5}
-                                imgExtension={['.jpg', '.jpeg', '.png']}
-                                defaultImages={images}
-                                limit={10}
-                                onChange={(file: File[], base: any[]) =>
-                                    setImages(base)
-                                }
-                            />
-                        )}
+                    <TextArea
+                        rows={15}
+                        placeholder="내용"
+                        onChange={(e) => setContent(e.target.value)}
+                    />
+                    <Rate onChange={setRate} />
+                    <ImageUploader
+                        withPreview={true}
+                        maxFileSize={5}
+                        imgExtension={['.jpg', '.jpeg', '.png']}
+                        defaultImages={images}
+                        limit={10}
+                        onChange={(file: File[], base: any[]) =>
+                            setImages(base)
+                        }
+                    />
                 </Space>
                 <ButtonGroup>
                     <Button type="primary" onClick={onActive}>
