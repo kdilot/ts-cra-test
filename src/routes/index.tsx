@@ -11,6 +11,7 @@ const Lotties = loadable(() => import('pages/lottie'));
 const BoardWrite = loadable(() => import('modules/board'));
 const DraftEditor = loadable(() => import('modules/draftEditor'));
 const ImageUploader = loadable(() => import('pages/imageUploader'));
+const PostCode = loadable(() => import('pages/postcode'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
@@ -50,6 +51,7 @@ const Root: React.FC = () => {
                             exact
                             component={ImageUploader}
                         />
+                        <Route path="/postcode" exact component={PostCode} />
                         <Route component={Error} />
                     </Switch>
                 </div>
