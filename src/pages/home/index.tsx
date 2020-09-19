@@ -11,6 +11,7 @@ const Home: React.FC = () => {
             <Link to="/board">게시판</Link>
             <Link to="/csv">CSV 다운로드</Link>
             <Link to="/image-uploader">이미지 업로더</Link>
+            <Link to="/postcode">KAKAO 주소검색</Link>
         </Container>
     );
 };
