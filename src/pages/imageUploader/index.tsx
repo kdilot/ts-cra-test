@@ -23,7 +23,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     width: 425px;
-    background: lightyellow;
+    background: rgba(0, 0, 0, 0.05);
 `;
 
 export default ImageUpload;
