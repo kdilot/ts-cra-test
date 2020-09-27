@@ -8,7 +8,6 @@ const Home: React.FC = () => {
             <Link to="/lottie">Lottie 이미지</Link>
             <Link to="/editor/draftjs">Draftjs 에디터</Link>
             <Link to="/codeblock">코드 Preview</Link>
-            <Link to="/board">게시판</Link>
             <Link to="/csv">CSV 다운로드</Link>
             <Link to="/image-uploader">이미지 업로더</Link>
             <Link to="/postcode">KAKAO 주소검색</Link>
