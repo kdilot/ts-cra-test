@@ -8,7 +8,6 @@ const Error = loadable(() => import('pages/error'));
 const Csv = loadable(() => import('pages/csvDownload'));
 const Codeblock = loadable(() => import('pages/codeblock'));
 const Lotties = loadable(() => import('pages/lottie'));
-const BoardWrite = loadable(() => import('modules/board'));
 const DraftEditor = loadable(() => import('modules/draftEditor'));
 const ImageUploader = loadable(() => import('pages/imageUploader'));
 const PostCode = loadable(() => import('pages/postcode'));
@@ -38,7 +37,6 @@ const Root: React.FC = () => {
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route path="/csv" exact component={Csv} />
-                        <Route path="/board" exact component={BoardWrite} />
                         <Route path="/codeblock" exact component={Codeblock} />
                         <Route
                             path="/editor/draftjs"
