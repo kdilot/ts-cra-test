@@ -9,6 +9,7 @@ const Postcode: React.FC = () => {
             address.address = data.address || data.jibunAddress;
             address.zonecode = data.zonecode;
         }
+        console.log(address);
         return address;
     };
 
@@ -17,7 +18,7 @@ const Postcode: React.FC = () => {
             <ButtonLayout>닫기</ButtonLayout>
             <ContentsLayout>
                 <DaumPostcode
-                    onSearch={(e) => null}
+                    onSearch={(e) => console.log(e)}
                     onComplete={onCheckAddress}
                     width={'100%'}
                     height={'100%'}
