@@ -9963,10 +9963,10 @@ react-csv@^2.0.3:
   resolved "https://registry.yarnpkg.com/react-csv/-/react-csv-2.0.3.tgz#f5d17a3c71107d9bcbe580049350200debdc042a"
   integrity sha512-exyAdFLAxtuM4wNwLYrlKyPYLiJ7e0mv9tqPAd3kq+k1CiJFtznevR3yP0icv5q/y200w+lzNgi7TQn1Wrhu0w==
 
-react-daum-postcode@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-daum-postcode/-/react-daum-postcode-2.0.0.tgz#9f463a33220fb641a88c448988b453cfc572e915"
-  integrity sha512-iaDca48nVtz3N8XXTtZOnoTt2BOzhwSn5G8v4QEVAspjnjyB9A2qzDFuH5WcZJNBJSgxLY/+3thxw9PAbd9IGA==
+react-daum-postcode@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-daum-postcode/-/react-daum-postcode-2.0.1.tgz#58710cf0c21be79aeb3f7ca240738f7b5e27a3c4"
+  integrity sha512-tFwTYbDfU0kl4sbFnHA/2TLLI+yv1dinTUB2xV2ky3FajzPDoiW4Uf3KSzq/iYO1oQE2g6/rUSbgWFcQw2ivHg==
   dependencies:
     prop-types "^15.6.2"
     react "^16.4.2"
