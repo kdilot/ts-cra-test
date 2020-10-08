@@ -11,6 +11,7 @@ const Lotties = loadable(() => import('pages/lottie'));
 const DraftEditor = loadable(() => import('modules/draftEditor'));
 const ImageUploader = loadable(() => import('pages/imageUploader'));
 const PostCode = loadable(() => import('pages/postcode'));
+const Admin = loadable(() => import('pages/testpage'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
@@ -36,6 +37,7 @@ const Root: React.FC = () => {
                     }}>
                     <Switch>
                         <Route path="/" exact component={Home} />
+                        <Route path="/admin" exact component={Admin} />
                         <Route path="/csv" exact component={Csv} />
                         <Route path="/codeblock" exact component={Codeblock} />
                         <Route
