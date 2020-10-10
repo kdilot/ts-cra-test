@@ -8,8 +8,8 @@ const Test: React.FC = () => {
             <Section>
                 <Header>#THIS IS HEADER</Header>
                 <Section direction="row">
-                    <Aside>adf</Aside>
-                    <Section>adf</Section>
+                    <Aside>#MENU</Aside>
+                    <Section></Section>
                 </Section>
                 <Footer>#THIS IS FOOTER</Footer>
             </Section>
