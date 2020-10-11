@@ -9,7 +9,10 @@ const Test: React.FC = () => {
                 <Header>#THIS IS HEADER</Header>
                 <Section direction="row">
                     <Aside>#MENU</Aside>
-                    <Section></Section>
+                    <Section>
+                        <p>1.버튼</p>
+                        <p>2.메뉴</p>
+                    </Section>
                 </Section>
                 <Footer>#THIS IS FOOTER</Footer>
             </Section>
