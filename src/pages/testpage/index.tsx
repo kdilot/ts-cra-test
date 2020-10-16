@@ -1,5 +1,11 @@
 import React from 'react';
-import { Header, Section, Footer, Aside } from 'pages/testpage/components';
+import {
+    Header,
+    Section,
+    Footer,
+    Aside,
+    Button,
+} from 'pages/testpage/components';
 import styled from 'styled-components';
 
 const Test: React.FC = () => {
@@ -12,6 +18,11 @@ const Test: React.FC = () => {
                     <Section>
                         <p>1.버튼</p>
                         <p>2.메뉴</p>
+                        <div>
+                            <Button size={'medium'} danger>
+                                button
+                            </Button>
+                        </div>
                     </Section>
                 </Section>
                 <Footer>#THIS IS FOOTER</Footer>
