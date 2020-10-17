@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const ApiSlackMessageBot = async (text: string) => {
+export const ApiSlackMessageBot = async (text: string, channel: string) => {
     axios.defaults.headers.common[
         'Authorization'
     ] = `Bearer xoxb-1414837188823-1429583655154-o8g8i8VIwjj0tNyNO82Mbdos`;
@@ -9,7 +9,7 @@ export const ApiSlackMessageBot = async (text: string) => {
             `https://cors-anywhere.herokuapp.com/https://slack.com/api/chat.postMessage`,
             {
                 text,
-                channel: '#일반',
+                channel,
             },
         )
         .then((res) => {
