@@ -6,7 +6,9 @@ export const ApiSlackMessageBot = async (text: string, channel: string) => {
     ] = `Bearer xoxb-1414837188823-1429583655154-o8g8i8VIwjj0tNyNO82Mbdos`;
     const rs = await axios
         .post(
+            //  localhost test
             `https://cors-anywhere.herokuapp.com/https://slack.com/api/chat.postMessage`,
+            // `https://slack.com/api/chat.postMessage`,
             {
                 text,
                 channel,
