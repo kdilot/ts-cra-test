@@ -12,6 +12,7 @@ const DraftEditor = loadable(() => import('modules/draftEditor'));
 const ImageUploader = loadable(() => import('pages/imageUploader'));
 const PostCode = loadable(() => import('pages/postcode'));
 const Admin = loadable(() => import('pages/testpage'));
+const Search = loadable(() => import('pages/search'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
@@ -52,6 +53,7 @@ const Root: React.FC = () => {
                             component={ImageUploader}
                         />
                         <Route path="/postcode" exact component={PostCode} />
+                        <Route path="/search" exact component={Search} />
                         <Route component={Error} />
                     </Switch>
                 </div>
