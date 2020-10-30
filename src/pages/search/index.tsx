@@ -46,7 +46,7 @@ const Search: React.FC = () => {
 
 const Container = styled.section`
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 500px;
     height: 500px;
