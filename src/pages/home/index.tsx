@@ -12,6 +12,7 @@ const Home: React.FC = () => {
             <Link to="/image-uploader">이미지 업로더</Link>
             <Link to="/postcode">KAKAO 주소검색</Link>
             <Link to="/admin">어드민 테스트</Link>
+            <Link to="/search">키워드 검색</Link>
         </Container>
     );
 };
