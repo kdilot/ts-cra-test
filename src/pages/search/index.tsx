@@ -3,17 +3,21 @@ import keywordList from './keyword.json';
 import { Input } from 'antd';
 import styled from 'styled-components';
 
-const Search: React.FC = () => {
-    const [keyword, setKeyword] = useState<any>('');
-    const [list, setList] = useState<any[]>([]);
+interface Props {
+    onClick: (value: string) => void;
+}
 
-    const onLiveKeyword = (word: string) => {
-        const index = word.indexOf(keyword);
-        const result = `${word.slice(
+const Search: React.FC<Props> = ({ onClick }) => {
+    const [list, setList] = useState<any[]>([]);
+    const [keyword, setKeyword] = useState<string>('');
+
+    const onLiveKeyword = (text: string) => {
+        const index = text.indexOf(keyword);
+        const view = `${text.slice(
             0,
             index,
-        )}<span>${keyword}</span>${word.slice(index + keyword.length)}`;
-        return result;
+        )}<span>${keyword}</span>${text.slice(index + keyword.length)}`;
+        return { text, view };
     };
 
     useEffect(() => {
@@ -22,8 +26,8 @@ const Search: React.FC = () => {
             return;
         }
         const result = keywordList
-            .filter((data) => data.indexOf(keyword) !== -1)
-            .map((data) => onLiveKeyword(data));
+            .filter((data: string) => data.indexOf(keyword) !== -1)
+            .map((data: string) => onLiveKeyword(data));
         setList(result);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [keyword]);
@@ -34,10 +38,11 @@ const Search: React.FC = () => {
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
             />
-            {list.map((word: string, index: number) => (
+            {list.map((word: any, index: number) => (
                 <TextListLayout
                     key={index}
-                    dangerouslySetInnerHTML={{ __html: word }}
+                    onClick={() => onClick(word.text)}
+                    dangerouslySetInnerHTML={{ __html: word.view }}
                 />
             ))}
         </Container>
