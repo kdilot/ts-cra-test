@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface Props {
     styles?: any;
@@ -11,9 +11,15 @@ interface Props {
     onClick?: (e: React.MouseEventHandler<HTMLButtonElement>) => void;
 }
 
+const COLOR = {
+    DEFAULT: 'rgba(0, 0, 0, 0.65)',
+    DANGER: 'rgba(255, 0, 0, 0.65)',
+    PRIMARY: 'rgba(0, 0, 255, 0.65)',
+};
+
 const Button: React.FC<Props> = ({
     styles,
-    size = 'small',
+    size = 'medium',
     disabled = false,
     loading = false,
     marked = false,
@@ -45,7 +51,7 @@ const Container = styled.button<any>`
             : ''};
     border-radius: 2px;
     outline: 0;
-    margin: 10px;
+    margin: 5px;
     &:disabled {
         cursor: not-allowed;
         border: 1px solid rgba(0, 0, 0, 0.2);
@@ -53,17 +59,16 @@ const Container = styled.button<any>`
         color: rgba(0, 0, 0, 0.3);
     }
     border: 1px solid
-        ${(props) => (props.marked ? 'transparent' : 'rgba(0, 0, 0, 0.5)')};
-    background: ${(props) => (props.marked ? 'rgba(0, 0, 255, 0.6)' : '#fff')};
-    color: ${(props) => (props.marked ? '#fff' : '#000')};
-    ${(props) =>
-        props.danger &&
-        css`
-            border: 1px solid
-                ${props.marked ? 'transparent' : 'rgba(255, 0, 0, 0.65)'};
-            background: ${props.marked ? 'rgba(255, 0, 0, 0.65)' : '#fff'};
-            color: ${props.marked ? '#fff' : 'rgba(255, 0, 0, 1)'};
-        `}
+        ${(props) =>
+            props.marked
+                ? 'transparent'
+                : COLOR[props.danger ? 'DANGER' : 'DEFAULT']};
+    background: ${(props) =>
+        props.marked
+            ? COLOR[props.danger ? 'DANGER' : 'DEFAULT']
+            : 'transparent'};
+    color: ${(props) =>
+        props.marked ? '#fff' : COLOR[props.danger ? 'DANGER' : 'DEFAULT']};
 `;
 
 export default Button;
