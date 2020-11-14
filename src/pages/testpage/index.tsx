@@ -19,7 +19,10 @@ const Test: React.FC = () => {
                         <p>1.버튼</p>
                         <p>2.메뉴</p>
                         <div>
-                            <Button size={'medium'} danger>
+                            <Button>button</Button>
+                            <Button danger>button</Button>
+                            <Button marked>button</Button>
+                            <Button marked danger>
                                 button
                             </Button>
                         </div>
