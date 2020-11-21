@@ -13,6 +13,7 @@ const ImageUploader = loadable(() => import('pages/imageUploader'));
 const PostCode = loadable(() => import('pages/postcode'));
 const Admin = loadable(() => import('pages/testpage'));
 const Search = loadable(() => import('pages/search'));
+const Debounce = loadable(() => import('pages/debounce'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
@@ -54,6 +55,7 @@ const Root: React.FC = () => {
                         />
                         <Route path="/postcode" exact component={PostCode} />
                         <Route path="/search" exact component={Search} />
+                        <Route path="/debounce" exact component={Debounce} />
                         <Route component={Error} />
                     </Switch>
                 </div>
