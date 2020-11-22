@@ -13,6 +13,7 @@ const Home: React.FC = () => {
             <Link to="/postcode">KAKAO 주소검색</Link>
             <Link to="/admin">어드민 테스트</Link>
             <Link to="/search">키워드 검색</Link>
+            <Link to="/debounce">Debounce</Link>
         </Container>
     );
 };
