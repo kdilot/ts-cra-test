@@ -14,6 +14,7 @@ const Home: React.FC = () => {
             <Link to="/admin">어드민 테스트</Link>
             <Link to="/search">키워드 검색</Link>
             <Link to="/debounce">Debounce</Link>
+            <Link to="/iamport">아임포트 결제모듈</Link>
         </Container>
     );
 };
