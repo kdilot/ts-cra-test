@@ -1,3 +1,4 @@
+import { testFunction } from 'common/functions';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -11,7 +12,6 @@ const Divider: React.FC<Props> = ({
     vertical = false,
     size = 5,
 }: any) => {
-    console.log(children);
     // return <Container>{children}</Container>;
     return (
         <Container className={vertical && 'vertical'}>
@@ -30,6 +30,7 @@ const Divider: React.FC<Props> = ({
 };
 
 const Test: React.FC = () => {
+    testFunction('?name=eufhwke&age=50&address=teuseaskdjfhlask');
     return (
         <div style={{ width: '200px', background: 'yellow' }}>
             <Divider size={10}>
