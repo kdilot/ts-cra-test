@@ -15,6 +15,8 @@ const Admin = loadable(() => import('pages/testpage'));
 const Search = loadable(() => import('pages/search'));
 const Debounce = loadable(() => import('pages/debounce'));
 const Async = loadable(() => import('pages/async'));
+const Iamport = loadable(() => import('pages/iamport'));
+const Test = loadable(() => import('pages/test'));
 
 const Root: React.FC = () => {
     const history = createBrowserHistory();
@@ -58,6 +60,8 @@ const Root: React.FC = () => {
                         <Route path="/search" exact component={Search} />
                         <Route path="/debounce" exact component={Debounce} />
                         <Route path="/async" exact component={Async} />
+                        <Route path="/iamport" exact component={Iamport} />
+                        <Route path="/test" exact component={Test} />
                         <Route component={Error} />
                     </Switch>
                 </div>
